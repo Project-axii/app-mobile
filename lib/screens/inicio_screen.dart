@@ -54,16 +54,6 @@ class InicioScreen extends StatelessWidget {
           const SizedBox(height: 16),
 
           // Activities List
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.list_alt, color: Colors.blue),
-              title: const Text('Lista de compras'),
-              subtitle: const Text('1 item'),
-              trailing: const Icon(Icons.add_circle, color: Colors.blue),
-              onTap: () {},
-            ),
-          ),
-          const SizedBox(height: 12),
 
           Card(
             child: ListTile(
@@ -75,17 +65,6 @@ class InicioScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.music_note, color: Colors.green),
-              title: const Text('Vincule serviços de música'),
-              subtitle: const Text(
-                  'Faça o streaming de sua música favorita e\nmais.'),
-              onTap: () {},
-            ),
-          ),
-          const SizedBox(height: 24),
 
           // Favoritos Section
           Row(
@@ -122,24 +101,15 @@ class InicioScreen extends StatelessWidget {
                 ),
                 _buildFavoriteCard(
                   context,
-                  'Lista Compras',
-                  Icons.list_alt,
-                  true,
-                  subtitle: 'Favorito sugerido',
-                ),
-                _buildFavoriteCard(
-                  context,
                   'Alarmes',
                   Icons.alarm,
                   true,
-                  subtitle: 'Favorito sugerido',
                 ),
                 _buildFavoriteCard(
                   context,
                   'Continuar escutando',
                   Icons.play_arrow,
                   true,
-                  subtitle: 'Favorito sugerido',
                 ),
               ],
             ),

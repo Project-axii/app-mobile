@@ -5,6 +5,7 @@ import 'rotinas_screen.dart';
 import 'listas_notas_screen.dart';
 import 'alarmes_timers_screen.dart';
 import 'calendario_screen.dart';
+import 'configuracoes_screen.dart';
 
 class MaisScreen extends StatelessWidget {
   const MaisScreen({super.key});
@@ -176,41 +177,52 @@ class MaisScreen extends StatelessWidget {
           const SizedBox(height: 24),
 
           // Bottom Menu
-          ...bottomItems
-              .map((item) => Padding(
-                    padding: const EdgeInsets.only(bottom: 12.0),
-                    child: Card(
-                      child: InkWell(
-                        onTap: () {},
-                        borderRadius: BorderRadius.circular(12),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Row(
-                            children: [
-                              Icon(
-                                item['icon'] as IconData,
-                                color: Colors.grey.shade400,
-                                size: 20,
-                              ),
-                              const SizedBox(width: 12),
-                              Text(
-                                item['title'] as String,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium
-                                    ?.copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSurface,
-                                    ),
-                              ),
-                            ],
-                          ),
+          ...bottomItems.asMap().entries.map((entry) {
+            final index = entry.key;
+            final item = entry.value;
+
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: Card(
+                child: InkWell(
+                  onTap: () {
+                    if (index == 0) {
+                      // Configurações
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ConfiguracoesScreen(),
                         ),
-                      ),
+                      );
+                    }
+                  },
+                  borderRadius: BorderRadius.circular(12),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          item['icon'] as IconData,
+                          color: Colors.grey.shade400,
+                          size: 20,
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          item['title'] as String,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
+                        ),
+                      ],
                     ),
-                  ))
-              .toList(),
+                  ),
+                ),
+              ),
+            );
+          }).toList(),
         ],
       ),
     );
